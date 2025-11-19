@@ -9,11 +9,13 @@ use App\Enums\Religion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Patient extends Model
 {
     /** @use HasFactory<\Database\Factories\PatientFactory> */
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, LogsActivity;
 
     protected $fillable = [
         'medical_record_number',
@@ -47,5 +49,10 @@ class Patient extends Model
             'religion' => Religion::class,
             'status' => PatientStatus::class,
         ];
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 }

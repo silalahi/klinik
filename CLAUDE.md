@@ -12,6 +12,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - laravel/fortify (FORTIFY) - v1
 - laravel/framework (LARAVEL) - v12
 - laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
 - livewire/flux (FLUXUI_FREE) - v2
 - livewire/livewire (LIVEWIRE) - v3
 - livewire/volt (VOLT) - v1
@@ -639,3 +640,4 @@ Fortify is a headless authentication backend that provides authentication routes
 - `Features::updatePasswords()` to let users change their passwords.
 - `Features::resetPasswords()` for password reset via email.
 </laravel-boost-guidelines>
+- always use English for label, placeholder etc. make sure to use __("xx") to localize

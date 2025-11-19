@@ -14,21 +14,21 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Clinic')" class="grid">
                     <flux:navlist.item icon="chart-pie" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="calendar-days" href="#" :current="false" wire:navigate>{{ __('Reservations') }}</flux:navlist.item>
                     <flux:navlist.item icon="user-circle" :href="route('patients.index')" :current="request()->routeIs('patients.*')" wire:navigate>{{ __('Patients') }}</flux:navlist.item>
-                    <flux:navlist.item icon="stethoscope" href="#" :current="false" wire:navigate>{{ __('Treatments') }}</flux:navlist.item>
-                    <flux:navlist.item icon="users" href="#" :current="false" wire:navigate>{{ __('Staff') }}</flux:navlist.item>
+                    <flux:navlist.item icon="calendar-days" href="#" :current="false" wire:navigate>{{ __('Appointments') }}</flux:navlist.item>
+                    <flux:navlist.item icon="users" href="#" :current="false" wire:navigate>{{ __('Doctor & Staff') }}</flux:navlist.item>
+                    <flux:navlist.item icon="stethoscope" href="#" :current="false" wire:navigate>{{ __('Consultations') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Finance')" class="grid">
-                    <flux:navlist.item icon="wallet" href="#" :current="false" wire:navigate>{{ __('Sales') }}</flux:navlist.item>
+                    <flux:navlist.item icon="wallet" href="#" :current="false" wire:navigate>{{ __('Billing') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Physical Asset')" class="grid">
+                <flux:navlist.group :heading="__('Reports')" class="grid">
                     <flux:navlist.item icon="pill" href="#" :current="false" wire:navigate>{{ __('Medicine Stocks') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
@@ -88,7 +88,7 @@
         </flux:sidebar>
 
         <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden">
+        <flux:header class="lg:hidden border-b border-zinc-200">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
             <flux:spacer />
