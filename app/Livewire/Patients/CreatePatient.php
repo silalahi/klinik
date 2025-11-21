@@ -5,11 +5,10 @@ namespace App\Livewire\Patients;
 use App\Enums\Gender;
 use App\Enums\PatientStatus;
 use App\Models\Patient;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class CreatePatientModal extends Component
+class CreatePatient extends Component
 {
     #[Validate('nullable|string|min:5|max:50')]
     public string $medical_record_number;
@@ -37,7 +36,7 @@ class CreatePatientModal extends Component
         $this->validate();
 
         $patient = Patient::create([
-            'medical_record_number' => $this->medical_record_number ?? 'MR-' . now()->format('ymd-his'),
+            'medical_record_number' => $this->medical_record_number ?? 'MR-'.now()->format('ymd-his'),
             'id_number' => $this->id_number,
             'name' => $this->name,
             'date_of_birth' => $this->date_of_birth,
@@ -52,7 +51,7 @@ class CreatePatientModal extends Component
 
     public function render()
     {
-        return view('livewire.patients.create-patient-modal', [
+        return view('livewire.patients.create-patient', [
             'genders' => Gender::cases(),
         ]);
     }

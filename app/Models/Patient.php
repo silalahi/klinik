@@ -15,7 +15,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Patient extends Model
 {
     /** @use HasFactory<\Database\Factories\PatientFactory> */
-    use HasFactory, SoftDeletes, LogsActivity;
+    use HasFactory, LogsActivity, SoftDeletes;
 
     protected $fillable = [
         'medical_record_number',

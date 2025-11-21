@@ -101,5 +101,5 @@
     </div>
 
 
-    <livewire:patients.create-patient-modal/>
+    <livewire:patients.create-patient/>
 </div>

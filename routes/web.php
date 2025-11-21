@@ -1,6 +1,5 @@
 <?php
 
-use App\Livewire\Patients\CreatePatient;
 use App\Livewire\Patients\EditPatient;
 use App\Livewire\Patients\ListPatients;
 use App\Livewire\Settings\Appearance;
