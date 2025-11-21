@@ -21,7 +21,7 @@ class PatientFactory extends Factory
     public function definition(): array
     {
         return [
-            'medical_record_number' => 'MR' . fake()->unique()->numerify('######'),
+            'medical_record_number' => 'MR-' . fake()->unique()->numerify('######'),
             'id_number' => fake()->optional()->numerify('################'),
             'name' => fake()->name(),
             'place_of_birth' => fake()->city(),

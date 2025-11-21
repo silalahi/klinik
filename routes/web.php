@@ -20,7 +20,6 @@ Route::view('dashboard', 'dashboard')
 
 Route::middleware(['auth'])->group(function () {
     Route::get('patients', ListPatients::class)->name('patients.index');
-    Route::get('patients/create', CreatePatient::class)->name('patients.create');
     Route::get('patients/{patient}/edit', EditPatient::class)->name('patients.edit');
 
     Route::redirect('settings', 'settings/profile');

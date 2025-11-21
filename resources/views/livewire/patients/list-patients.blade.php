@@ -6,9 +6,11 @@
         </div>
 
         <div class="flex space-x-3">
-            <flux:button variant="primary" icon="plus" class="!rounded-full" href="{{ route('patients.create') }}" wire:navigate>
-                {{ __('Add Patient') }}
-            </flux:button>
+            <flux:modal.trigger name="create-patient-modal">
+                <flux:button variant="primary" icon="plus" class="!rounded-full">
+                    {{ __('Add Patient') }}
+                </flux:button>
+            </flux:modal.trigger>
         </div>
     </div>
 
@@ -97,4 +99,7 @@
     <div>
         {{ $patients->links() }}
     </div>
+
+
+    <livewire:patients.create-patient-modal/>
 </div>

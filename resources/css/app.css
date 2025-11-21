@@ -46,6 +46,11 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
+
+    .required::after {
+        content: ' *';
+        @apply text-red-500;
+    }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
