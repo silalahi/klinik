@@ -11,9 +11,9 @@ enum PatientStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::Active => 'Aktif',
-            self::Inactive => 'Tidak Aktif',
-            self::Deceased => 'Meninggal',
+            self::Active => __('Active'),
+            self::Inactive => __('Inactive'),
+            self::Deceased => __('Deceased'),
         };
     }
 

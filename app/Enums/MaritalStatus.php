@@ -12,10 +12,10 @@ enum MaritalStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::Single => 'Belum Menikah',
-            self::Married => 'Menikah',
-            self::Divorced => 'Cerai',
-            self::Widowed => 'Janda/Duda',
+            self::Single => __('Single'),
+            self::Married => __('Married'),
+            self::Divorced => __('Divorced'),
+            self::Widowed => __('Widowed'),
         };
     }
 }
