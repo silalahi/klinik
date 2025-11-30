@@ -2,7 +2,6 @@
     <div class="space-y-3 sm:space-y-0 sm:border-b sm:border-zinc-200 sm:pb-5 sm:flex sm:items-center sm:justify-between">
         <div>
             <flux:heading size="xl" level="1" class="font-semibold">{{ __('Patients') }}</flux:heading>
-            <flux:subheading size="lg">{{ __('Manage patients data') }}</flux:subheading>
         </div>
 
         <div class="flex space-x-3">
@@ -20,40 +19,40 @@
 
     <div class="overflow-hidden ring-1 ring-zinc-200 dark:border-zinc-700 sm:rounded-lg">
         <table class="relative min-w-full divide-y divide-zinc-200 dark:divide-zinc-700">
-            <thead class="bg-zinc-50 dark:bg-zinc-900">
+            <thead class="bg-zinc-100 dark:bg-zinc-900">
             <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-300 sm:pl-6">
-                    {{ __('Medical Record Number') }}
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-300 sm:pl-6">
+                    {{ __('Med. Record No.') }}
                 </th>
-                <th scope="col" class="hidden px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-300 lg:table-cell">
-                    {{ __('Name') }}
+                <th scope="col" class="hidden px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-300 lg:table-cell">
+                    {{ __('Patient Name') }}
                 </th>
-                <th scope="col" class="hidden px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-300 lg:table-cell">
+                <th scope="col" class="hidden px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-300 lg:table-cell">
                     {{ __('Date of Birth') }}
                 </th>
-                <th scope="col" class="hidden px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-300 lg:table-cell">
-                    {{ __('Phone') }}
+                <th scope="col" class="hidden px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-300 lg:table-cell">
+                    {{ __('Sex') }}
                 </th>
-                <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-300">
+                <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-300">
                     {{ __('Status') }}
                 </th>
                 <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6">
-                    <span class="sr-only">Select</span>
+                    <span class="sr-only">Action</span>
                 </th>
             </tr>
             </thead>
             <tbody class="divide-y divide-zinc-200 bg-white dark:divide-zinc-700 dark:bg-zinc-800">
-            @forelse($patients as $patient)
+            @forelse($this->patients as $patient)
                 <tr wire:key="patient-{{ $patient->id }}" class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
                     <td class="relative py-4 pl-4 pr-3 text-sm sm:pl-6">
                         <div class="font-medium text-indigo-500 hover:underline transition-all">
-                            <a href="#">{{ $patient->medical_record_number }}</a>
+                            <a href="{{ route('patients.show', ['patient' => $patient]) }}" wire:navigate>{{ $patient->medical_record_number }}</a>
                         </div>
                         <div class="mt-1 flex flex-col text-zinc-700 sm:block lg:hidden">
                             <span>{{ $patient->name }}</span>
                             <span class="hidden sm:inline">·</span>
                             <span>{{ $patient->date_of_birth?->format('d F Y') }}</span>
-                            <span>{{ $patient->phone }}</span>
+                            <span>{{ $patient->gender->label() }}</span>
                         </div>
                     </td>
                     <td class="hidden px-3 py-3.5 text-sm text-zinc-700 lg:table-cell">
@@ -63,7 +62,7 @@
                         {{ $patient->date_of_birth?->format('d F Y') }}
                     </td>
                     <td class="hidden px-3 py-3.5 text-sm text-zinc-700 lg:table-cell">
-                        {{ $patient->phone }}
+                        {{ $patient->gender->label() }}
                     </td>
                     <td class="px-3 py-3.5 text-sm text-zinc-700">
                         <span data-slot="badge"
@@ -79,7 +78,7 @@
                         </span>
                     </td>
                     <td class="relative py-3.5 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <flux:button size="sm">Edit</flux:button>
+                        &nbsp;
                     </td>
                 </tr>
             @empty
@@ -97,9 +96,8 @@
         </table>
     </div>
     <div>
-        {{ $patients->links() }}
+        {{ $this->patients->links() }}
     </div>
-
 
     <livewire:patients.create-patient/>
 </div>

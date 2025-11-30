@@ -26,19 +26,25 @@
 
             <flux:field>
                 <flux:label class="required">{{ __('Date of birth') }}</flux:label>
-                <flux:input wire:model="date_of_birth" type="date"/>
+{{--                <flux:input wire:model="date_of_birth" type="date"/>--}}
+                <flux:date-picker wire:model="date_of_birth">
+                    <x-slot name="trigger">
+                        <flux:date-picker.input />
+                    </x-slot>
+                </flux:date-picker>
                 <flux:error name="date_of_birth" />
             </flux:field>
 
             <flux:field>
                 <flux:label class="required">{{ __('Gender') }}</flux:label>
-                <flux:select wire:model="gender" placeholder="{{ __('Select gender') }}">
+                <flux:radio.group wire:model="gender" variant="segmented">
                     @foreach ($genders as $option)
-                        <option value="{{ $option->value }}">{{ $option->label() }}</option>
+                        <flux:radio value="{{ $option->value }}" label="{{ $option->label() }}"/>
                     @endforeach
-                </flux:select>
+                </flux:radio.group>
                 <flux:error name="gender" />
             </flux:field>
+
 
             <flux:field>
                 <flux:label class="required">{{ __('Phone Number') }}</flux:label>
@@ -58,10 +64,9 @@
                 {{ __('Cancel') }}
             </flux:button>
             <flux:button variant="primary" type="submit" wire:loading.attr="disabled">
-                <span wire:loading.remove wire:target="save">{{ __('Save') }} &rarr;</span>
+                <span wire:loading.remove wire:target="save">{{ __('Next') }} &rarr;</span>
                 <span wire:loading wire:target="save">{{ __('Saving...') }}</span>
             </flux:button>
         </div>
-
     </form>
 </flux:modal>

@@ -5,6 +5,7 @@ namespace App\Livewire\Patients;
 use App\Livewire\WithSearch;
 use App\Models\Patient;
 use Illuminate\View\View;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,9 +13,13 @@ class ListPatients extends Component
 {
     use WithPagination, WithSearch;
 
-    public function render(): View
+    public $sortBy = 'created_at';
+    public $sortDirection = 'desc';
+
+    #[Computed]
+    public function patients()
     {
-        $patients = Patient::query()
+        return Patient::query()
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
                     $q->where('name', 'like', '%'.$this->search.'%')
@@ -22,11 +27,12 @@ class ListPatients extends Component
                         ->orWhere('phone', 'like', '%'.$this->search.'%');
                 });
             })
-            ->latest()
+            ->tap(fn ($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
             ->paginate(10);
+    }
 
-        return view('livewire.patients.list-patients', [
-            'patients' => $patients,
-        ]);
+    public function render(): View
+    {
+        return view('livewire.patients.list-patients');
     }
 }

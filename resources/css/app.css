@@ -48,7 +48,7 @@
     }
 
     .required::after {
-        content: ' *';
+        content: '*';
         @apply text-red-500;
     }
 }

@@ -46,7 +46,7 @@ class CreatePatient extends Component
             'status' => PatientStatus::Active,
         ]);
 
-        return $this->redirect(route('patients.index', ['patient' => $patient]), navigate: true);
+        return $this->redirect(route('patients.show', ['patient' => $patient]), navigate: true);
     }
 
     public function render()
