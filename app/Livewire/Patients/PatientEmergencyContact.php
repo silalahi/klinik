@@ -34,7 +34,11 @@ class PatientEmergencyContact extends Component
     {
         $validated = $this->validate();
 
-        $this->patient->update($validated);
+        $this->patient->update([
+            'emergency_contact_name' => $validated['emergency_contact_name'] ?: null,
+            'emergency_contact_phone' => $validated['emergency_contact_phone'] ?: null,
+            'emergency_contact_relationship' => $validated['emergency_contact_relationship'] ?: null,
+        ]);
 
         Flux::modal('edit-patient-emergency-contact')->close();
 

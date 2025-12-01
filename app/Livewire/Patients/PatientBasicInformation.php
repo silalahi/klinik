@@ -62,7 +62,18 @@ class PatientBasicInformation extends Component
     {
         $validated = $this->validate();
 
-        $this->patient->update($validated);
+        $this->patient->update([
+            'name' => $validated['name'],
+            'medical_record_number' => $validated['medical_record_number'] ?: null,
+            'id_number' => $validated['id_number'],
+            'place_of_birth' => $validated['place_of_birth'] ?: null,
+            'date_of_birth' => $validated['date_of_birth'],
+            'gender' => $validated['gender'],
+            'marital_status' => $validated['marital_status'] ?: null,
+            'religion' => $validated['religion'] ?: null,
+            'blood_type' => $validated['blood_type'] ?: null,
+            'occupation' => $validated['occupation'] ?: null,
+        ]);
 
         Flux::modal('edit-patient-basic-information')->close();
 

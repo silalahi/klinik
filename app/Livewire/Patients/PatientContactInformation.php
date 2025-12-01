@@ -34,7 +34,11 @@ class PatientContactInformation extends Component
     {
         $validated = $this->validate();
 
-        $this->patient->update($validated);
+        $this->patient->update([
+            'phone' => $validated['phone'],
+            'email' => $validated['email'] ?: null,
+            'address' => $validated['address'],
+        ]);
 
         Flux::modal('edit-patient-contact-information')->close();
 
