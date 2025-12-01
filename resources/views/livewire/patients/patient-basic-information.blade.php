@@ -145,9 +145,11 @@
             </div>
 
             <div class="flex justify-end gap-3 border-t border-zinc-200 pt-5">
-                <flux:button variant="ghost" type="button" href="{{ route('patients.index') }}" wire:navigate>
-                    {{ __('Cancel') }}
-                </flux:button>
+                <flux:modal.close>
+                    <flux:button variant="ghost">
+                        {{ __('Cancel') }}
+                    </flux:button>
+                </flux:modal.close>
                 <flux:button variant="primary" type="submit" wire:loading.attr="disabled">
                     <span wire:loading.remove wire:target="save">{{ __('Save changes') }}</span>
                     <span wire:loading wire:target="save">{{ __('Saving...') }}</span>

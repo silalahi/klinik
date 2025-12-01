@@ -16,44 +16,9 @@
         </span>
     </div>
 
-    @livewire('patients.patient-basic-information', ['patient' => $patient])
+    <livewire:patients.patient-basic-information :patient="$patient" />
 
-    {{-- Contact Information --}}
-    <div class="overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-700 sm:rounded-lg bg-white dark:bg-zinc-800">
-        <div class="px-4 py-5 sm:px-6 border-b border-zinc-200 dark:border-zinc-700 flex items-center justify-between">
-            <div>
-                <flux:heading size="lg" class="text-zinc-900 dark:text-zinc-100">{{ __('Contact Information') }}</flux:heading>
-                <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('How to reach this patient') }}</p>
-            </div>
-            <flux:button size="sm" variant="ghost" icon="pencil" wire:click="$dispatch('edit-contact-info')">
-                {{ __('Edit') }}
-            </flux:button>
-        </div>
-        <div class="border-t border-zinc-100 dark:border-zinc-700">
-            <dl class="divide-y divide-zinc-100 dark:divide-zinc-700">
-                <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ __('Phone Number') }}</dt>
-                    <dd class="mt-1 text-sm text-zinc-700 dark:text-zinc-300 sm:col-span-2 sm:mt-0">
-                        <a href="tel:{{ $patient->phone }}" class="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">{{ $patient->phone }}</a>
-                    </dd>
-                </div>
-                <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ __('Email') }}</dt>
-                    <dd class="mt-1 text-sm text-zinc-700 dark:text-zinc-300 sm:col-span-2 sm:mt-0">
-                        @if($patient->email)
-                            <a href="mailto:{{ $patient->email }}" class="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">{{ $patient->email }}</a>
-                        @else
-                            -
-                        @endif
-                    </dd>
-                </div>
-                <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ __('Full Address') }}</dt>
-                    <dd class="mt-1 text-sm text-zinc-700 dark:text-zinc-300 sm:col-span-2 sm:mt-0">{{ $patient->address }}</dd>
-                </div>
-            </dl>
-        </div>
-    </div>
+    <livewire:patients.patient-contact-information :patient="$patient" />
 
     {{-- Emergency Contact --}}
     <div class="overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-700 sm:rounded-lg bg-white dark:bg-zinc-800">

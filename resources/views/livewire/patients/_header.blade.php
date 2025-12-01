@@ -3,7 +3,7 @@
         <flux:button size="sm" variant="ghost" href="{{ route('patients.index') }}" icon="arrow-left" wire:navigate>
             {{ __('Back') }}
         </flux:button>
-        <div class="flex space-x-2 items-center">
+        <div class="flex space-x-5 items-center">
             <div>
                 <flux:avatar size="xl" :color="$patient->status->color()" :name="$patient->name" />
             </div>
