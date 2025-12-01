@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <flux:modal name="edit-patient-basic-information" variant="flyout" class="w-1/3">
+    <flux:modal name="edit-patient-basic-information" variant="flyout" class="w-full md:w-1/3">
         <form wire:submit="save" class="space-y-6">
             <div class="border-b border-zinc-200 pb-5">
                 <flux:heading size="xl">{{ __('Edit Patient Basic Information') }}</flux:heading>
