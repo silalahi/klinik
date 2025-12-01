@@ -1,7 +1,7 @@
 <?php
 
 use App\Livewire\Patients\ListPatients;
-use App\Livewire\Patients\ShowPatient;
+use App\Livewire\Patients\PatientInformation;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -19,8 +19,9 @@ Route::view('dashboard', 'dashboard')
 
 Route::middleware(['auth'])->group(function () {
     Route::get('patients', ListPatients::class)->name('patients.index');
-    Route::get('patients/{patient}', ShowPatient::class)->name('patients.show');
-    Route::get('patients/{patient}/edit', \App\Livewire\Patients\EditPatient::class)->name('patients.edit');
+    Route::get('patients/{patient}/information', PatientInformation::class)->name('patients.information');
+    // Route::get('patients/{patient}', PatientInformation::class)->name('patients.show');
+    // Route::get('patients/{patient}/edit', \App\Livewire\Patients\EditPatient::class)->name('patients.edit');
 
     Route::redirect('settings', 'settings/profile');
     Route::get('settings/profile', Profile::class)->name('profile.edit');

@@ -4,6 +4,7 @@ namespace App\Livewire\Patients;
 
 use App\Livewire\WithSearch;
 use App\Models\Patient;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -14,10 +15,11 @@ class ListPatients extends Component
     use WithPagination, WithSearch;
 
     public $sortBy = 'created_at';
+
     public $sortDirection = 'desc';
 
     #[Computed]
-    public function patients()
+    public function patients(): LengthAwarePaginator
     {
         return Patient::query()
             ->when($this->search, function ($query) {

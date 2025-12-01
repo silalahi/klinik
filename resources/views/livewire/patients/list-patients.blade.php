@@ -46,7 +46,7 @@
                 <tr wire:key="patient-{{ $patient->id }}" class="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
                     <td class="relative py-4 pl-4 pr-3 text-sm sm:pl-6">
                         <div class="font-medium text-indigo-500 hover:underline transition-all">
-                            <a href="{{ route('patients.show', ['patient' => $patient]) }}" wire:navigate>{{ $patient->medical_record_number }}</a>
+                            <a href="{{ route('patients.information', ['patient' => $patient]) }}" wire:navigate>{{ $patient->medical_record_number }}</a>
                         </div>
                         <div class="mt-1 flex flex-col text-zinc-700 sm:block lg:hidden">
                             <span>{{ $patient->name }}</span>
