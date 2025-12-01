@@ -55,4 +55,12 @@ class Patient extends Model
     {
         return LogOptions::defaults();
     }
+
+    public function statusActivities()
+    {
+        return $this->activities()
+            ->where('event', 'updated')
+            ->whereNotNull('properties->attributes->status')
+            ->orderBy('created_at', 'desc');
+    }
 }
